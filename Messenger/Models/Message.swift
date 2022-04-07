@@ -1,8 +1,11 @@
-//
-//  Message.swift
-//  Messenger
-//
-//  Created by Benjamin Green on 14/07/2021.
-//
-
+import Firebase
 import Foundation
+enum MessageType: String {
+    case sent
+    case received
+}
+struct Message: Hashable {
+    let text: String
+    let type: MessageType
+    let created: Date //Date
+}

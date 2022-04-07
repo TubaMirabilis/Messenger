@@ -1,17 +1,21 @@
-//
-//  MessengerApp.swift
-//  Messenger
-//
-//  Created by Benjamin Green on 14/07/2021.
-//
-
+import Firebase
 import SwiftUI
 
 @main
 struct MessengerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate: AppDelegate
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ConversationListView()
+                .environmentObject(AppStateModel())
         }
+    }
+}
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
+                     [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        FirebaseApp.configure()
+        return true
     }
 }
